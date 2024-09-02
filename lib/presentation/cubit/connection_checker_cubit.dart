@@ -4,6 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 
 part 'connection_checker_cubit.freezed.dart';
 part 'connection_checker_state.dart';
@@ -37,6 +38,18 @@ class ConnectionCheckerCubit extends Cubit<ConnectionCheckerState> {
     subscription = Connectivity().onConnectivityChanged.listen(
       (result) {
         updateConnectivityStatus(result.first);
+      },
+    );
+
+    final connectionChecker = InternetConnectionChecker();
+
+    connectionChecker.onStatusChange.listen(
+      (InternetConnectionStatus status) {
+        if (status == InternetConnectionStatus.connected) {
+          debugPrint('Connected to the internet');
+        } else {
+          debugPrint('Disconnected from the internet');
+        }
       },
     );
   }
