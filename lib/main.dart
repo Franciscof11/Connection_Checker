@@ -1,12 +1,10 @@
 import 'package:connection_checker/presentation/cubit/connection_checker_cubit.dart';
+import 'package:connection_checker/presentation/home_page/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
-  runApp(BlocProvider(
-    create: (context) => ConnectionCheckerCubit(),
-    child: const MainApp(),
-  ));
+  runApp(const MainApp());
 }
 
 class MainApp extends StatelessWidget {
@@ -15,15 +13,11 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: GestureDetector(
-            onTap: () {
-              context.read<ConnectionCheckerCubit>().checkConnectivity();
-            },
-            child: const Text('Hello World!'),
-          ),
-        ),
+      home: BlocProvider(
+        create: (context) => ConnectionCheckerCubit()
+          ..checkConnectivity()
+          ..trackConnectivityChange(),
+        child: const HomePage(),
       ),
     );
   }

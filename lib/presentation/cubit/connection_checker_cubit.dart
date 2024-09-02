@@ -9,7 +9,7 @@ part 'connection_checker_cubit.freezed.dart';
 part 'connection_checker_state.dart';
 
 class ConnectionCheckerCubit extends Cubit<ConnectionCheckerState> {
-  ConnectionCheckerCubit() : super(const ConnectionCheckerState.disconnected());
+  ConnectionCheckerCubit() : super(const ConnectionCheckerState.status(ConnectionStatus.disconnected));
 
   void checkConnectivity() async {
     try {
@@ -25,9 +25,9 @@ class ConnectionCheckerCubit extends Cubit<ConnectionCheckerState> {
 
   void updateConnectivityStatus(ConnectivityResult result) {
     if (result == ConnectivityResult.none) {
-      emit(const ConnectionCheckerState.disconnected());
+      emit(const ConnectionCheckerState.status(ConnectionStatus.disconnected));
     } else {
-      emit(const ConnectionCheckerState.disconnected());
+      emit(const ConnectionCheckerState.status(ConnectionStatus.connected));
     }
   }
 
