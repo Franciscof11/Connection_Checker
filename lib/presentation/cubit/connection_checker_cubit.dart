@@ -35,21 +35,21 @@ class ConnectionCheckerCubit extends Cubit<ConnectionCheckerState> {
   late StreamSubscription<List<ConnectivityResult>?> subscription;
 
   void trackConnectivityChange() {
-    subscription = Connectivity().onConnectivityChanged.listen(
-      (result) {
-        updateConnectivityStatus(result.first);
-      },
-    );
-
     final connectionChecker = InternetConnectionChecker();
 
-    connectionChecker.onStatusChange.listen(
-      (InternetConnectionStatus status) {
-        if (status == InternetConnectionStatus.connected) {
-          debugPrint('Connected to the internet');
-        } else {
-          debugPrint('Disconnected from the internet');
-        }
+    subscription = Connectivity().onConnectivityChanged.listen(
+      (result) {
+        connectionChecker.onStatusChange.listen(
+          (InternetConnectionStatus status) {
+            if (status == InternetConnectionStatus.connected) {
+              updateConnectivityStatus(result.first);
+              debugPrint('tem net kkk');
+            } else {
+              updateConnectivityStatus(ConnectivityResult.none);
+              debugPrint('SEM NET!!');
+            }
+          },
+        );
       },
     );
   }
