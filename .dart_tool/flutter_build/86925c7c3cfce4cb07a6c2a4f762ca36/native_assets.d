@@ -1,1 +1,0 @@
- C:\\Repositorios\\Projetos\\Connection_Checker\\.dart_tool\\flutter_build\\86925c7c3cfce4cb07a6c2a4f762ca36\\native_assets.yaml: 
