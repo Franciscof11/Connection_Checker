@@ -19,24 +19,21 @@ mixin _$ConnectionCheckerState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() connected,
-    required TResult Function() disconnected,
+    required TResult Function(ConnectionStatus status) status,
     required TResult Function(String message) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? connected,
-    TResult? Function()? disconnected,
+    TResult? Function(ConnectionStatus status)? status,
     TResult? Function(String message)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? connected,
-    TResult Function()? disconnected,
+    TResult Function(ConnectionStatus status)? status,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) =>
@@ -44,24 +41,21 @@ mixin _$ConnectionCheckerState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Connected value) connected,
-    required TResult Function(_Disconnected value) disconnected,
+    required TResult Function(_Status value) status,
     required TResult Function(_Error value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_Connected value)? connected,
-    TResult? Function(_Disconnected value)? disconnected,
+    TResult? Function(_Status value)? status,
     TResult? Function(_Error value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Connected value)? connected,
-    TResult Function(_Disconnected value)? disconnected,
+    TResult Function(_Status value)? status,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) =>
@@ -132,8 +126,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() connected,
-    required TResult Function() disconnected,
+    required TResult Function(ConnectionStatus status) status,
     required TResult Function(String message) error,
   }) {
     return initial();
@@ -143,8 +136,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? connected,
-    TResult? Function()? disconnected,
+    TResult? Function(ConnectionStatus status)? status,
     TResult? Function(String message)? error,
   }) {
     return initial?.call();
@@ -154,8 +146,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? connected,
-    TResult Function()? disconnected,
+    TResult Function(ConnectionStatus status)? status,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -169,8 +160,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Connected value) connected,
-    required TResult Function(_Disconnected value) disconnected,
+    required TResult Function(_Status value) status,
     required TResult Function(_Error value) error,
   }) {
     return initial(this);
@@ -180,8 +170,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_Connected value)? connected,
-    TResult? Function(_Disconnected value)? disconnected,
+    TResult? Function(_Status value)? status,
     TResult? Function(_Error value)? error,
   }) {
     return initial?.call(this);
@@ -191,8 +180,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Connected value)? connected,
-    TResult Function(_Disconnected value)? disconnected,
+    TResult Function(_Status value)? status,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -208,76 +196,100 @@ abstract class _Initial implements ConnectionCheckerState {
 }
 
 /// @nodoc
-abstract class _$$ConnectedImplCopyWith<$Res> {
-  factory _$$ConnectedImplCopyWith(
-          _$ConnectedImpl value, $Res Function(_$ConnectedImpl) then) =
-      __$$ConnectedImplCopyWithImpl<$Res>;
+abstract class _$$StatusImplCopyWith<$Res> {
+  factory _$$StatusImplCopyWith(
+          _$StatusImpl value, $Res Function(_$StatusImpl) then) =
+      __$$StatusImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ConnectionStatus status});
 }
 
 /// @nodoc
-class __$$ConnectedImplCopyWithImpl<$Res>
-    extends _$ConnectionCheckerStateCopyWithImpl<$Res, _$ConnectedImpl>
-    implements _$$ConnectedImplCopyWith<$Res> {
-  __$$ConnectedImplCopyWithImpl(
-      _$ConnectedImpl _value, $Res Function(_$ConnectedImpl) _then)
+class __$$StatusImplCopyWithImpl<$Res>
+    extends _$ConnectionCheckerStateCopyWithImpl<$Res, _$StatusImpl>
+    implements _$$StatusImplCopyWith<$Res> {
+  __$$StatusImplCopyWithImpl(
+      _$StatusImpl _value, $Res Function(_$StatusImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of ConnectionCheckerState
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? status = null,
+  }) {
+    return _then(_$StatusImpl(
+      null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as ConnectionStatus,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$ConnectedImpl implements _Connected {
-  const _$ConnectedImpl();
+class _$StatusImpl implements _Status {
+  const _$StatusImpl(this.status);
+
+  @override
+  final ConnectionStatus status;
 
   @override
   String toString() {
-    return 'ConnectionCheckerState.connected()';
+    return 'ConnectionCheckerState.status(status: $status)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$ConnectedImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$StatusImpl &&
+            (identical(other.status, status) || other.status == status));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, status);
+
+  /// Create a copy of ConnectionCheckerState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$StatusImplCopyWith<_$StatusImpl> get copyWith =>
+      __$$StatusImplCopyWithImpl<_$StatusImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() connected,
-    required TResult Function() disconnected,
+    required TResult Function(ConnectionStatus status) status,
     required TResult Function(String message) error,
   }) {
-    return connected();
+    return status(this.status);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? connected,
-    TResult? Function()? disconnected,
+    TResult? Function(ConnectionStatus status)? status,
     TResult? Function(String message)? error,
   }) {
-    return connected?.call();
+    return status?.call(this.status);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? connected,
-    TResult Function()? disconnected,
+    TResult Function(ConnectionStatus status)? status,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
-    if (connected != null) {
-      return connected();
+    if (status != null) {
+      return status(this.status);
     }
     return orElse();
   }
@@ -286,159 +298,47 @@ class _$ConnectedImpl implements _Connected {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Connected value) connected,
-    required TResult Function(_Disconnected value) disconnected,
+    required TResult Function(_Status value) status,
     required TResult Function(_Error value) error,
   }) {
-    return connected(this);
+    return status(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_Connected value)? connected,
-    TResult? Function(_Disconnected value)? disconnected,
+    TResult? Function(_Status value)? status,
     TResult? Function(_Error value)? error,
   }) {
-    return connected?.call(this);
+    return status?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Connected value)? connected,
-    TResult Function(_Disconnected value)? disconnected,
+    TResult Function(_Status value)? status,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
-    if (connected != null) {
-      return connected(this);
+    if (status != null) {
+      return status(this);
     }
     return orElse();
   }
 }
 
-abstract class _Connected implements ConnectionCheckerState {
-  const factory _Connected() = _$ConnectedImpl;
-}
+abstract class _Status implements ConnectionCheckerState {
+  const factory _Status(final ConnectionStatus status) = _$StatusImpl;
 
-/// @nodoc
-abstract class _$$DisconnectedImplCopyWith<$Res> {
-  factory _$$DisconnectedImplCopyWith(
-          _$DisconnectedImpl value, $Res Function(_$DisconnectedImpl) then) =
-      __$$DisconnectedImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$DisconnectedImplCopyWithImpl<$Res>
-    extends _$ConnectionCheckerStateCopyWithImpl<$Res, _$DisconnectedImpl>
-    implements _$$DisconnectedImplCopyWith<$Res> {
-  __$$DisconnectedImplCopyWithImpl(
-      _$DisconnectedImpl _value, $Res Function(_$DisconnectedImpl) _then)
-      : super(_value, _then);
+  ConnectionStatus get status;
 
   /// Create a copy of ConnectionCheckerState
   /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-
-class _$DisconnectedImpl implements _Disconnected {
-  const _$DisconnectedImpl();
-
-  @override
-  String toString() {
-    return 'ConnectionCheckerState.disconnected()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$DisconnectedImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() connected,
-    required TResult Function() disconnected,
-    required TResult Function(String message) error,
-  }) {
-    return disconnected();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? connected,
-    TResult? Function()? disconnected,
-    TResult? Function(String message)? error,
-  }) {
-    return disconnected?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? connected,
-    TResult Function()? disconnected,
-    TResult Function(String message)? error,
-    required TResult orElse(),
-  }) {
-    if (disconnected != null) {
-      return disconnected();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Connected value) connected,
-    required TResult Function(_Disconnected value) disconnected,
-    required TResult Function(_Error value) error,
-  }) {
-    return disconnected(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Connected value)? connected,
-    TResult? Function(_Disconnected value)? disconnected,
-    TResult? Function(_Error value)? error,
-  }) {
-    return disconnected?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Connected value)? connected,
-    TResult Function(_Disconnected value)? disconnected,
-    TResult Function(_Error value)? error,
-    required TResult orElse(),
-  }) {
-    if (disconnected != null) {
-      return disconnected(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Disconnected implements ConnectionCheckerState {
-  const factory _Disconnected() = _$DisconnectedImpl;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$StatusImplCopyWith<_$StatusImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -510,8 +410,7 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() connected,
-    required TResult Function() disconnected,
+    required TResult Function(ConnectionStatus status) status,
     required TResult Function(String message) error,
   }) {
     return error(message);
@@ -521,8 +420,7 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? connected,
-    TResult? Function()? disconnected,
+    TResult? Function(ConnectionStatus status)? status,
     TResult? Function(String message)? error,
   }) {
     return error?.call(message);
@@ -532,8 +430,7 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? connected,
-    TResult Function()? disconnected,
+    TResult Function(ConnectionStatus status)? status,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -547,8 +444,7 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Connected value) connected,
-    required TResult Function(_Disconnected value) disconnected,
+    required TResult Function(_Status value) status,
     required TResult Function(_Error value) error,
   }) {
     return error(this);
@@ -558,8 +454,7 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_Connected value)? connected,
-    TResult? Function(_Disconnected value)? disconnected,
+    TResult? Function(_Status value)? status,
     TResult? Function(_Error value)? error,
   }) {
     return error?.call(this);
@@ -569,8 +464,7 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Connected value)? connected,
-    TResult Function(_Disconnected value)? disconnected,
+    TResult Function(_Status value)? status,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
