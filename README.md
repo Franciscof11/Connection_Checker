@@ -37,7 +37,7 @@ The connection checker was a project made for a specific setup to check the user
 - **bloc** -> State Manager.
 - **freezed** -> Code generator for bloc state and event classes.
 - **connectivity_plus** -> Plugin that allows flutter apps to discover network connectivity types that can be used.
-- **internet_connection_checker** -> A library designed for seamless internet connectivity checks. This library enables you to verify your internet connection.
+- **internet_connection_checker** -> A library designed for seamless internet connectivity checks.
   
 ---
 
