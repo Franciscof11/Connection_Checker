@@ -3,20 +3,20 @@
     <img src="https://i.imgur.com/85o5xBx.png" width="200" height="200" alt="App Banner" />
 </p> 
 
-   <h2>Tópicos 📋</h2>
+   <h2>Topics 📋</h2>
 
   <p>
    
-   - [Sobre o Projeto 📖](#sobre-o-projeto---)
+   - [About 📖](#about-)
    - [Preview 📱](#preview-)
-   - [Tecnologias Utilizadas 👨🏽‍💻](#---technologies-used----)
-   - [Como usar 🤔](#how-to-use-)
+   - [Technologies Used 👨🏽‍💻](#---technologies-used----)
+   - [How to Use 🤔](#how-to-use-)
    </p>
 
-   <h2>Sobre o Projeto 📖</h2>
+   <h2>About 📖</h2>
    
    <p>
-    O connection checker foi um projeto feito para um setup específico de verificação da conexão do usuário com o aplicativo em questão. Utiliza Bloc para o gerenciamento de estado, e o pacote connectivity plus junto do internet connection checker para checar se o usuário tem ou não acesso á internet. O projeto serve de boilerplate para uso futuro em próximos projetos, para diminuir o tempo de codificação com esse template pronto.
+The connection checker was a project made for a specific setup to check the user's connection to the application in question. It uses Bloc for state management, and the connectivity plus package together with the internet connection checker to check whether or not the user has access to the internet. The project serves as a boilerplate for future use in upcoming projects, to reduce coding time with this ready-made template.
    </p>
 
 ---
@@ -26,7 +26,6 @@
    <p a>
     <img src="app_preview/app_preview_1.png" width="250" height="500" alt="App Preview">  
     <img src="app_preview/app_preview_2.png" width="250" height="500" alt="App Preview">   
-    <img src="app_preview/app_preview_3.png" width="250" height="500" alt="App Preview">   
    </p>
 
 ---
@@ -35,18 +34,10 @@
    Technologies Used 👨🏽‍💻
    </h2>
    
-- **bloc** -> Gerenciador de estado.
-- **freezed** -> Gerador de código para classes de estados e eventos do bloc.
-- **sqflite** -> Banco de dados SQL utilizado para realizar o cashe de dados na memória do aparelho.
-- **firebase_core** -> Utilização dos recursos do Firebase.
-- **google_fonts** -> Utilização de fontes nativa do Google.
-- **flutter_launcher_icons** -> Customização e configuração do ícone do applicativo.
-- **flutter_native_splash** -> Criação da Splash Screen nativa do aplicativo.
-- **device_preview** -> Testes em diversos tamanhos de tela, para melhor responsividade para a aplicação.
-- **bloc_test** -> Biblioteca usada para escrever e executar testes unitários quanto ao bloc.
-- **mocktail** -> Biblioteca utilizada para mockar serviços http e de banco de dados para os testes.
-- **shared_preferences** -> Biblioteca utilizada para persistir dados de pequeno porte.
-
+- **bloc** -> State Manager.
+- **freezed** -> Code generator for bloc state and event classes.
+- **connectivity_plus** -> Plugin that allows flutter apps to discover network connectivity types that can be used.
+- **internet_connection_checker** -> A library designed for seamless internet connectivity checks. This library enables you to verify your internet connection.
   
 ---
 
@@ -54,10 +45,10 @@
 
 ```
 - Clone this repository:
-$ git clone https://github.com/Franciscof11/To_Do_App.git ToDoApp
+$ git clone https://github.com/Franciscof11/Connection_Checker.git Connection_Checker
 
 - Enter in directory:
-$ cd ToDoApp
+$ cd Connection_Checker
 
 - For install dependencies:
 $ flutter pub get
